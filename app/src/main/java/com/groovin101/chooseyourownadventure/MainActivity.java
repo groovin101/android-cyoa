@@ -1,5 +1,6 @@
 package com.groovin101.chooseyourownadventure;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,8 +25,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = nameField.getText().toString();
-                Toast.makeText(MainActivity.this, name, Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
+                startStoryActivity(name);
             }
         });
+    }
+
+    private void startStoryActivity(String username) {
+        Intent intent = new Intent(this, StoryActivity.class);
+        intent.putExtra("NAME", username);
+        startActivity(intent);
     }
 }
